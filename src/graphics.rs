@@ -25,12 +25,8 @@ pub struct Display<
     _color: PhantomData<COLOR>,
 }
 
-impl<
-        const WIDTH: u32,
-        const HEIGHT: u32,
-        const BYTECOUNT: usize,
-        COLOR: ColorType + PixelColor,
-    > Default for Display<WIDTH, HEIGHT, BYTECOUNT, COLOR>
+impl<const WIDTH: u32, const HEIGHT: u32, const BYTECOUNT: usize, COLOR: ColorType + PixelColor>
+    Default for Display<WIDTH, HEIGHT, BYTECOUNT, COLOR>
 {
     /// 初始化显示缓冲区，默认为白色
     #[inline(always)]
@@ -43,12 +39,8 @@ impl<
 }
 
 /// 用于 embedded graphics 绘图
-impl<
-        const WIDTH: u32,
-        const HEIGHT: u32,
-        const BYTECOUNT: usize,
-        COLOR: ColorType + PixelColor,
-    > DrawTarget for Display<WIDTH, HEIGHT, BYTECOUNT, COLOR>
+impl<const WIDTH: u32, const HEIGHT: u32, const BYTECOUNT: usize, COLOR: ColorType + PixelColor>
+    DrawTarget for Display<WIDTH, HEIGHT, BYTECOUNT, COLOR>
 {
     type Color = COLOR;
     type Error = core::convert::Infallible;
@@ -65,24 +57,16 @@ impl<
 }
 
 /// 用于 embedded graphics 获取尺寸
-impl<
-        const WIDTH: u32,
-        const HEIGHT: u32,
-        const BYTECOUNT: usize,
-        COLOR: ColorType + PixelColor,
-    > OriginDimensions for Display<WIDTH, HEIGHT, BYTECOUNT, COLOR>
+impl<const WIDTH: u32, const HEIGHT: u32, const BYTECOUNT: usize, COLOR: ColorType + PixelColor>
+    OriginDimensions for Display<WIDTH, HEIGHT, BYTECOUNT, COLOR>
 {
     fn size(&self) -> Size {
         Size::new(WIDTH, HEIGHT)
     }
 }
 
-impl<
-        const WIDTH: u32,
-        const HEIGHT: u32,
-        const BYTECOUNT: usize,
-        COLOR: ColorType + PixelColor,
-    > Display<WIDTH, HEIGHT, BYTECOUNT, COLOR>
+impl<const WIDTH: u32, const HEIGHT: u32, const BYTECOUNT: usize, COLOR: ColorType + PixelColor>
+    Display<WIDTH, HEIGHT, BYTECOUNT, COLOR>
 {
     /// 获取内部缓冲区引用
     pub fn buffer(&self) -> &[u8] {

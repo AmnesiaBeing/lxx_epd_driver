@@ -42,7 +42,7 @@ pub trait ColorType {
 
 impl QuadColor {
     /// 计算默认颜色字节值
-    /// 
+    ///
     /// 对于四色显示，白色值0b01填充一个字节生成0x55（二进制0b01010101）
     /// 这个值适用于单缓冲区墨水屏的默认初始化
     pub const fn default_color_byte() -> u8 {
